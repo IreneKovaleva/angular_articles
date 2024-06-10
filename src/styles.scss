@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import "variables";
+
+body {
+  font-family: $applicationFont;
+  background-color: $applicationColor;
+  color: $applicationFontColor;
+}
+
+.mat-typography {
+  width: 100%;
+  height: 1408px;
+  align-items: center;
+  margin: 0 auto;
+}
