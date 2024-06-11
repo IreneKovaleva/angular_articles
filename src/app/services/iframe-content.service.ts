@@ -13,7 +13,9 @@ export class IframeContentService {
     private httpClient: HttpClient, private sanitizer: DomSanitizer) { }
 
   loadIframeContent(url: string): Observable<SafeHtml> {
-    return this.httpClient.get(url, { responseType: 'text' }).pipe(
+    const proxiedUrl = `/api${new URL(url).pathname}`;
+    console.log('proxiedUrl', proxiedUrl)
+    return this.httpClient.get(proxiedUrl, { responseType: 'text' }).pipe(
       map((response: string) => {
         if (typeof DOMParser !== 'undefined') {
           const domParser = new DOMParser();
