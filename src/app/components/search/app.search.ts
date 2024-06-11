@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {SearchValuesService} from "../../services/search-values.service";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   standalone: true,
@@ -11,13 +12,22 @@ import {SearchValuesService} from "../../services/search-values.service";
   templateUrl: 'app.search.html',
   imports: [FormsModule, MatFormFieldModule, MatInputModule],
 })
-export class AppSearch implements OnInit {
+export class AppSearch implements OnInit, OnDestroy{
   constructor(
     private _searchValuesService: SearchValuesService,
   ) {}
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
+  value: string = '';
 
   ngOnInit() {
-    this.onChange('space');
+    this._searchValuesService.data$.pipe(takeUntil(this._unsubscribeAll)).subscribe((data) => {
+      this.value = "space"
+
+      if (data) {
+        this.value = data.keyword
+      }
+    })
+    this.onChange(this.value);
   }
 
   onChange(value: string) {
@@ -32,5 +42,10 @@ export class AppSearch implements OnInit {
         }
       });
     }, 500)
+  }
+
+  ngOnDestroy() {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
   }
 }

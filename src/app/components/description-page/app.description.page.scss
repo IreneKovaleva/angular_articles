@@ -1,4 +1,5 @@
 @import "../../../_variables";
+@import "../../../_mixins";
 
 .article-block {
   position: relative;
@@ -12,7 +13,7 @@
   width: $elementsWidth;
 
   img {
-    background: rgba(196, 196, 196, 1);
+    background: $gray-background;
     display: block;
     object-fit: cover;
   }
@@ -24,18 +25,15 @@
   left: 75px;
   right: 75px;
   height: 1001px;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
+  border-radius: $border-radius;
+  @include center-align;
   padding: 50px 75px 50px 75px;
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
 
   &_design {
-    border: 1px solid rgba(234, 234, 234, 1);
-    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.05);
-    background: rgba(255, 255, 255, 1);
+    @include box-design($border, $box-shadow, $background-color);
   }
 
   &__header {
@@ -55,10 +53,7 @@
     margin: 50px 0 20px 0;
 
     &_design {
-      font-family: $applicationFont;
-      font-size: 18px;
-      color: $applicationFontColor;
-      font-weight: 400;
+      @include text-style($applicationFont, 18px, $applicationFontColor, 400);
     }
     p {
       margin-top: 10px;
@@ -76,11 +71,8 @@
   align-items: center;
 
   &_design {
+    @include text-style($applicationFont, $applicationFontSize, $applicationFontColor, 700);
     text-decoration: none;
-    font-family: $applicationFont;
-    font-size: $applicationFontSize;
-    color: $applicationFontColor;
-    font-weight: 700;
     display: inline-flex;
     align-items: center;
   }

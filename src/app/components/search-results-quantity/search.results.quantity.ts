@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, takeUntil} from "rxjs";
 import {SearchValuesService} from "../../services/search-values.service";
 
@@ -9,7 +9,7 @@ import {SearchValuesService} from "../../services/search-values.service";
   templateUrl: './search.results.quantity.html',
   styleUrl: './search.results.quantity.scss'
 })
-export class SearchResultsQuantity implements OnInit{
+export class SearchResultsQuantity implements OnInit, OnDestroy{
   searchResultsQuantity: number = 0;
 
   constructor(
@@ -26,5 +26,9 @@ export class SearchResultsQuantity implements OnInit{
           this.searchResultsQuantity = results.data.length;
         }
       });
+  }
+  ngOnDestroy() {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
   }
 }

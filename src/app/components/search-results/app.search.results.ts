@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, takeUntil} from "rxjs";
 import {SearchValuesService} from "../../services/search-values.service";
 import {SearchResult} from "../../interfaces/search-results.interface"
@@ -27,7 +27,7 @@ import {TruncatePipe} from "../../pipes/text.truncate";
   templateUrl: './app.search.results.html',
   styleUrl: './app.search.results.scss'
 })
-export class SearchResults implements OnInit{
+export class SearchResults implements OnInit, OnDestroy {
   searchResults: SearchResult[] = [{
     id: 0,
     title: '',
@@ -52,5 +52,9 @@ export class SearchResults implements OnInit{
         this.searchResultsValue = data.keyword
       }
     })
+  }
+  ngOnDestroy() {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
   }
 }
