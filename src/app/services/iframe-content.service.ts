@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { parseFromString } from 'dom-parser';
 
 @Injectable({
   providedIn: 'root'
