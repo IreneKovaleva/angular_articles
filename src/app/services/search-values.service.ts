@@ -15,12 +15,8 @@ export class SearchValuesService {
     this.dataSubject.next(newData);
   }
 
-  getData(): any {
-    return this.dataSubject.getValue();
-  }
-
   getSearchResults(req: string): Observable<any> {
-    return this._httpClient.get(`https://api.spaceflightnewsapi.net/v4/articles/?limit=6&ordering=title&title_contains_one=${req}`);
+    return this._httpClient.get(`https://api.spaceflightnewsapi.net/v4/articles/?limit=6&news_site=SpaceNews&ordering=title&title_contains_one=${req}`);
   }
 
 }

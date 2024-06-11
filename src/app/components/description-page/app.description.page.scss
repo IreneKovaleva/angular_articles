@@ -1,0 +1,96 @@
+@import "../../../_variables";
+
+.article-block {
+  position: relative;
+  align-items: center;
+  max-height: 1255px;
+  height: 100%;
+}
+
+.article-block-image {
+  position: relative;
+  width: $elementsWidth;
+
+  img {
+    background: rgba(196, 196, 196, 1);
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.article-block-text {
+  position: absolute;
+  top: 150px;
+  left: 75px;
+  right: 75px;
+  height: 1001px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 75px 50px 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+
+  &_design {
+    border: 1px solid rgba(234, 234, 234, 1);
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 1);
+  }
+
+  &__header {
+    position: relative;
+    margin-top: 35px;
+    text-align: center;
+
+    &_design {
+      font-family: $applicationFont;
+      font-size: 24px;
+      color: $applicationFontColor;
+      font-weight: 400;
+    }
+  }
+  &__description {
+    position: relative;
+    margin: 50px 0 20px 0;
+
+    &_design {
+      font-family: $applicationFont;
+      font-size: 18px;
+      color: $applicationFontColor;
+      font-weight: 400;
+    }
+    p {
+      margin-top: 10px;
+    }
+  }
+
+}
+
+.article-block-back-home {
+  position: absolute;
+  bottom: 55px;
+  left: 150px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+
+  &_design {
+    text-decoration: none;
+    font-family: $applicationFont;
+    font-size: $applicationFontSize;
+    color: $applicationFontColor;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+  }
+  a {
+    margin-left: 5px;
+  }
+
+}
+
+
+
+
+

@@ -7,6 +7,7 @@ import {DatePipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {DateSuffix} from "../../pipes/date.suffix";
 import {HighlightPipe} from "../../pipes/text.highlight";
 import {RouterLink} from "@angular/router";
+import {TruncatePipe} from "../../pipes/text.truncate";
 
 @Component({
   selector: 'app-search-results',
@@ -20,24 +21,27 @@ import {RouterLink} from "@angular/router";
     NgIf,
     DateSuffix,
     HighlightPipe,
-    RouterLink
+    RouterLink,
+    TruncatePipe
   ],
   templateUrl: './app.search.results.html',
   styleUrl: './app.search.results.scss'
 })
 export class SearchResults implements OnInit{
-  searchResults: SearchResult[] = [{id: 0,
+  searchResults: SearchResult[] = [{
+    id: 0,
     title: '',
-    url: '',
     image_url: '',
     summary: '',
     published_at: ""
   }];
   searchResultsValue: string = '';
 
+
   constructor(
     private _searchValuesService: SearchValuesService,
   ) {}
+
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
