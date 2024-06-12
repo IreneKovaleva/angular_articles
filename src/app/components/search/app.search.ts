@@ -21,7 +21,7 @@ export class AppSearch implements OnInit, OnDestroy{
 
   ngOnInit() {
     this._searchValuesService.data$.pipe(takeUntil(this._unsubscribeAll)).subscribe((data) => {
-      this.value = "space"
+      this.value = "rocket"
 
       if (data) {
         this.value = data.keyword
