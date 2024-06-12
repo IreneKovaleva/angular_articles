@@ -8,13 +8,15 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class IframeContentService {
-
+  private baseUrl = 'https://spacenews.com';
   constructor(
     private httpClient: HttpClient, private sanitizer: DomSanitizer) { }
 
   loadIframeContent(url: string): Observable<SafeHtml> {
-    const proxiedUrl = `/api${new URL(url).pathname}`;
+
+    const proxiedUrl = `${this.baseUrl}/api${new URL(url).pathname}`;
     console.log('proxiedUrl', proxiedUrl)
+    console.log('url', url)
     return this.httpClient.get(proxiedUrl, { responseType: 'text' }).pipe(
       map((response: string) => {
         if (typeof DOMParser !== 'undefined') {
