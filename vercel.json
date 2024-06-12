@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api",
-      "destination": "https://spacenews.com/api"
+      "source": "/api/:path*",
+      "destination": "https://spacenews.com/:path*"
     }
   ]
 }
