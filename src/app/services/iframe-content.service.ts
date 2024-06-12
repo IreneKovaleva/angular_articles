@@ -13,7 +13,7 @@ export class IframeContentService {
 
   loadIframeContent(url: string): Observable<SafeHtml> {
 
-    const proxiedUrl = `${new URL(url).pathname}`;
+    const proxiedUrl = `/api${new URL(url).pathname}`;
     console.log('proxiedUrl', proxiedUrl)
     console.log('url', url)
     return this.httpClient.get(proxiedUrl, { responseType: 'text' }).pipe(
