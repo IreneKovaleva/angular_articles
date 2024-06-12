@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
   const { path } = event;
-  const targetUrl = `https://spacenews.com/api`;
+  const targetUrl = `https://spacenews.com/`;
 
   try {
     const response = await fetch(targetUrl);
