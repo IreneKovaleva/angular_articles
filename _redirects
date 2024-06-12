@@ -1,1 +1,2 @@
-/api/* https://spacenews.com/api/:splat 200
+/api/* /.netlify/functions/proxy 200
+
