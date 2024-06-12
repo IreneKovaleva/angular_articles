@@ -1,5 +1,4 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://spacenews.com/:splat"
+  to = "https://spacenews.com/api/:splat"
   status = 200
-  force = true
